@@ -32,11 +32,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(nid.equals("D123456") && password.equals("123456")) {
                     Toast.makeText(LoginActivity.this, "登入成功", Toast.LENGTH_LONG).show();
-                    //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    //startActivity(intent);
-                    //finish();
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("https://www.fcu.edu.tw"));
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("nid", nid);
                     startActivity(intent);
                 } else {
                     Toast.makeText(LoginActivity.this, "登入失敗，請確認帳號密碼", Toast.LENGTH_LONG).show();
