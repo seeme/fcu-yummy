@@ -1,5 +1,7 @@
 package fcu.app.myfirstapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText etNid;
     private EditText etPassword;
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         etNid = findViewById(R.id.et_nid);
         etPassword = findViewById(R.id.et_password);
@@ -29,9 +31,15 @@ public class MainActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString();
 
                 if(nid.equals("D123456") && password.equals("123456")) {
-                    Toast.makeText(MainActivity.this, "登入成功", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "登入成功", Toast.LENGTH_LONG).show();
+                    //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    //startActivity(intent);
+                    //finish();
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("https://www.fcu.edu.tw"));
+                    startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this, "登入失敗，請確認帳號密碼", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "登入失敗，請確認帳號密碼", Toast.LENGTH_LONG).show();
                 }
 
             }
